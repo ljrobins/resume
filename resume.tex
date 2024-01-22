@@ -1,0 +1,108 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=0.5in, right=0.5in, top=0.5in, bottom=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+
+% Discourage hyphenation
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Disable paragraph indentation
+\setlength{\parindent}{0pt}
+% Add some space between paragraphs
+\setlength{\parskip}{0.1em}
+% Set the skip length before itemize
+\setlist[itemize]{before=\vspace{-0.5\baselineskip}}
+
+% Custom commands for sections
+\newcommand{\sectiontitle}[1]{{\Large \textbf{#1}}\vspace{0.5em}\hrule\vspace{0.5em}}
+
+\begin{document}
+\thispagestyle{empty}
+
+% Setting font
+\sffamily
+
+% Header
+\noindent
+\textbf{\huge Liam Robinson} \hfill \href{mailto:robin502@purdue.edu}{robin502@purdue.edu} | (704) 998-8906
+\rule{\linewidth}{4pt}
+\vspace{-0.5em}
+
+% Education
+\sectiontitle{EDUCATION}
+\textbf{Purdue University} -- West Lafayette, IN \\
+\textit{Ph.D.\ Aeronautical and Astronautical Engineering} \hfill January 2024 -- Present \\
+\textit{MS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill January 2023 -- December 2023 \\
+\textit{BS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill August 2019 -- December 2022 \\
+
+% Employment
+\sectiontitle{EMPLOYMENT}
+\textbf{Space Domain Awareness Research} -- Graduate Research Assistant \hfill October 2021 -- Present
+\begin{itemize}[noitemsep]
+    \item Pursuing light curve inversion research in Dr.\ Carolin Frueh's Space Information Dynamics group,
+    estimating human-made space object shape and attitude from unresolved optical measurements
+    \item Improved existing optimization algorithm for reconstruction of non-convex objects, introducing novel
+    situational awareness capabilities while accelerating model-driven simulation by factor of 10,000
+    \item Collaborated with Ph.D.\ students on relative pose estimation and filter design for attitude estimation
+\end{itemize}
+
+\textbf{Aerospace Corporation} -- Graduate Astrodynamics Intern \hfill May 2023 -- August 2023
+\begin{itemize}[noitemsep]
+    \item Implemented cislunar formation flight strategies leveraging quasi-periodic orbits in the CR3BP
+    \item Maintained cislunar orbit visualization tool, providing insight to both technical and public-facing work
+    \item Built Python interface to FORTRAN cislunar trajectory design tool, improving usability for analysts
+    \item Wrote extensive internal documentation to aid others documenting Python projects with Sphinx
+\end{itemize}
+
+\textbf{Katalyst Space Technologies} -- Guidance, Navigation, and Control Intern \hfill May 2022 -- August 2022
+\begin{itemize}[noitemsep]
+    \item Developed Python framework for dynamic trade studies for Space Domain Awareness pipeline
+    \item Reviewed pull requests for PEP8 compliance and functionality, improving code quality
+    \item Created modeling architecture materials for SRR presentation, ensuring effective communication
+\end{itemize}
+
+\textbf{Analytical Graphics, Inc.} -- Systems Engineering Intern \hfill May 2021 -- August 2021
+\begin{itemize}[noitemsep]
+    \item Worked with 130 engineers analyzing active and planned missions in STK and ODTK
+    \item Solved all customer cases, improving product knowledge with satisfaction score of 9.5 / 10
+    \item Designed simulation environment to compute and visualize data transfer in large constellations
+\end{itemize}
+
+% Awards & Fellowships
+\sectiontitle{AWARDS \& FELLOWSHIPS}
+\begin{itemize}[noitemsep]
+    \item National Defense Science and Engineering Graduate Fellowship \hfill May 2023
+    \item NSF Graduate Research Fellowship \hfill May 2023
+    \item NASA National Space Technology Graduate Research Opportunity Fellowship \hfill May 2023
+    \item 3rd place graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2023
+    \item Best research talk, interdisciplinary research -- \textit{Undergraduate Research Conference} \hfill May 2022
+    \item Best undergraduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2022
+\end{itemize}
+
+% Publications
+\sectiontitle{FIRST AUTHOR PUBLICATIONS}
+\begin{itemize}[noitemsep]
+    \item L.\ Robinson and C.\ Frueh, “Light Curve Inversion for Reliable Shape Reconstruction of Human-Made
+    Space Objects”, Proceedings of the 32nd Astrodynamics Specialist Conference, August 2022
+\end{itemize}
+
+% Relevant Experience
+\sectiontitle{RELEVANT EXPERIENCE}
+\textbf{Founder of Boilerexams.com} \hfill August 2019 -- Present
+\begin{itemize}[noitemsep]
+    \item Published 80 hours of video explanations covering 500 questions from past Purdue calculus exams
+    \item Aided over 15,000 students through 15 years of cummulative watch time and 750,000 views to date
+    \item Lead team of 35 develop and maintain website integrating exam questions and videos, giving students
+    insight into studying performance with 2,800,000 questions answered to date
+\end{itemize}
+
+% Technical Skills
+\sectiontitle{TECHNICAL SKILLS}
+\textbf{Tools:} STK, GMAT, ODTK, SPICE \\
+\textbf{Languages:} Python, C, C++, Julia, OpenGL/GLSL, MATLAB \\
+\textbf{Technologies:} Git, Sphinx, Docker
+
+\end{document}
