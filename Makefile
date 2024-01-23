@@ -4,6 +4,9 @@ all: clean resume open clean_after
 
 resume:
 	lualatex -shell-escape resume
+	biber resume
+	lualatex -shell-escape resume
+	lualatex -shell-escape resume
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.idx *.lot *.lof *.fls *.fdb* *.bcf *.lol *.run.xml *.snm *.nav

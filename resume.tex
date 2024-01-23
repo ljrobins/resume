@@ -4,6 +4,8 @@
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{lmodern}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{liams_first_authors.bib}
 
 % Discourage hyphenation
 \hyphenpenalty=10000
@@ -77,17 +79,16 @@
     \item National Defense Science and Engineering Graduate Fellowship \hfill May 2023
     \item NSF Graduate Research Fellowship \hfill May 2023
     \item NASA National Space Technology Graduate Research Opportunity Fellowship \hfill May 2023
-    \item 3rd place graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2023
+    \item Third place graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2023
     \item Best research talk, interdisciplinary research -- \textit{Undergraduate Research Conference} \hfill May 2022
     \item Best undergraduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2022
 \end{itemize}
 
 % Publications
 \sectiontitle{FIRST AUTHOR PUBLICATIONS}
-\begin{itemize}[noitemsep]
-    \item L.\ Robinson and C.\ Frueh, “Light Curve Inversion for Reliable Shape Reconstruction of Human-Made
-    Space Objects”, Proceedings of the 32nd Astrodynamics Specialist Conference, August 2022
-\end{itemize}
+\nocite{*}
+\printbibliography[heading=none]
+
 
 % Relevant Experience
 \sectiontitle{RELEVANT EXPERIENCE}
