@@ -1,0 +1,97 @@
+\documentclass[11pt, a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[left=0.5in, right=0.5in, top=0.5in, bottom=0.5in]{geometry}
+\usepackage{enumitem}
+\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{first.bib}
+\addbibresource{nonfirst.bib}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
+      \perdatasource{nonfirst.bib}
+      \step[fieldset=keywords, fieldvalue={,nobib}, append]
+    }
+  }
+}
+
+% Discourage hyphenation
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+
+% Disable paragraph indentation
+\setlength{\parindent}{0pt}
+% Add some space between paragraphs
+\setlength{\parskip}{0.1em}
+% Set the skip length before itemize
+\setlist[itemize]{before=\vspace{-0.5\baselineskip}}
+
+% Custom commands for sections
+\newcommand{\sectiontitle}[1]{{\Large \textbf{#1}}\vspace{0.5em}\hrule\vspace{0.5em}}
+
+\begin{document}
+\thispagestyle{empty}
+
+% Setting font
+\sffamily
+
+% Header
+\noindent
+\textbf{\huge Liam Robinson} -- \textit{\huge Curriculum Vitae} \hfill \href{mailto:robin502@purdue.edu}{robin502@purdue.edu} | (704) 998-8906
+\rule{\linewidth}{4pt}
+\vspace{-0.5em}
+
+% Education
+\sectiontitle{Education}
+\textbf{Purdue University} -- West Lafayette, IN \\
+\textit{Ph.D.\ Aeronautical and Astronautical Engineering} \hfill January 2024 -- Present \\
+\textit{MS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill January 2023 -- December 2023 \\
+\textit{BS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill August 2019 -- December 2022 \\
+
+% Employment
+\sectiontitle{Employment}
+\textbf{Space Domain Awareness Research} -- Graduate Research Assistant \hfill October 2021 -- Present \\
+\textbf{The Aerospace Corporation} -- Graduate Astrodynamics Intern \hfill May 2023 -- August 2023 \\
+\textbf{Katalyst Space Technologies} -- Guidance, Navigation, and Control Intern \hfill May 2022 -- August 2022 \\
+\textbf{Analytical Graphics, Inc.} -- Systems Engineering Intern \hfill May 2021 -- August 2021 \\
+
+
+\sectiontitle{Awards \& Honors}
+\begin{itemize}[noitemsep]
+    \item National Defense Science and Engineering Graduate Fellowship \hfill May 2023
+    \item NSF Graduate Research Fellowship \hfill May 2023
+    \item NASA National Space Technology Graduate Research Opportunity Fellowship \hfill May 2023
+    \item Third place graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2023
+    \item Best research talk -- \textit{Undergraduate Research Conference} \hfill May 2022
+    \item Best interdisciplinary research -- \textit{Undergraduate Research Conference} \hfill May 2022
+    \item Best undergraduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2022
+\end{itemize}
+
+% Professional Activities
+\sectiontitle{Professional Activities}
+\begin{itemize}[noitemsep]
+    \item \textbf{Judge} -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill April 2024
+\end{itemize}
+
+% Publications
+\nocite{*}
+\sectiontitle{First-Author Publications}
+\printbibliography[heading=none, notkeyword={nobib}, resetnumbers=true]
+
+\sectiontitle{Other Publications}
+\printbibliography[heading=none, keyword={nobib}, resetnumbers=true]
+
+% Relevant Experience
+\pagebreak
+\sectiontitle{Academic Outreach}
+\textbf{Founder of Boilerexams.com} \hfill August 2019 -- Present
+\begin{itemize}[noitemsep]
+    \item Published 80 hours of video explanations covering 500 questions from past Purdue calculus exams
+    \item Aided over 20,000 students through 22 years of cummulative studying time and 750,000 video views to date
+    \item Lead team of 35 develop and maintain website integrating exam questions and videos, giving students
+    insight into studying performance with 3,400,000 questions answered as of April 2024
+\end{itemize}
+
+\end{document}
