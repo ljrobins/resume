@@ -1,13 +1,14 @@
 .PHONY: all clean clean_after resume open opencv cv
 
-all: clean resume open clean_after
-allcv: clean cv opencv clean_after
+all: clean resume clean_after
+all-cv: clean cv opencv clean_after
 
 resume:
 	lualatex -shell-escape resume
 	biber resume
 	lualatex -shell-escape resume
 	lualatex -shell-escape resume
+	cp resume.pdf ../personal-site/static
 
 cv:
 	lualatex -shell-escape cv
