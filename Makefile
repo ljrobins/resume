@@ -8,7 +8,7 @@ resume:
 	biber resume
 	lualatex -shell-escape resume
 	lualatex -shell-escape resume
-	cp resume.pdf ../personal-site/static
+	cp resume.pdf ../../sites/personal-site/static
 
 cv:
 	lualatex -shell-escape cv
