@@ -1,35 +1,52 @@
-\documentclass[11pt, a4paper]{article}
+\documentclass[10pt, a4paper]{article}
 \usepackage[utf8]{inputenc}
 \usepackage[left=0.5in, right=0.5in, top=0.5in, bottom=0.5in]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{lmodern}
-\usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage[backend=biber, style=authortitle, sorting=ynt, giveninits=false, defernumbers=true, dashed=false]{biblatex}
 \addbibresource{first.bib}
 \addbibresource{nonfirst.bib}
+\addbibresource{working.bib}
 
-\usepackage{fontawesome5}
 \usepackage{hyperref}
 
-\makeatletter
-\newcommand{\github}[1]{%
-   \href{#1}{\faGithub}%
-}
-\makeatother
-
-\makeatletter
-\newcommand{\yt}[1]{%
-   \href{#1}{\faYoutube}%
-}
-\makeatother
-
+% \usepackage{fontawesome5}
+% \makeatletter
+% \newcommand{\github}[1]{%
+%    \href{#1}{\faGithub}%
+% }
+% \makeatother
+% \makeatletter
+% \newcommand{\yt}[1]{%
+%    \href{#1}{\faYoutube}%
+% }
+% \makeatother
 % https://orcid.org/0009-0005-7612-5613
 
 \DeclareSourcemap{
   \maps[datatype=bibtex]{
     \map[overwrite]{
+      \perdatasource{first.bib}
+      \step[fieldset=keywords, fieldvalue={,first}, append]
+    }
+  }
+}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
       \perdatasource{nonfirst.bib}
-      \step[fieldset=keywords, fieldvalue={,nobib}, append]
+      \step[fieldset=keywords, fieldvalue={,second}, append]
+    }
+  }
+}
+
+\DeclareSourcemap{
+  \maps[datatype=bibtex]{
+    \map[overwrite]{
+      \perdatasource{working.bib}
+      \step[fieldset=keywords, fieldvalue={,working}, append]
     }
   }
 }
@@ -44,6 +61,8 @@
 \setlength{\parskip}{0.1em}
 % Set the skip length before itemize
 \setlist[itemize]{before=\vspace{-0.5\baselineskip}}
+% before bibitems
+\setlength{\bibitemsep}{0.5em}
 
 % Custom commands for sections
 \newcommand{\sectiontitle}[1]{{\Large \textbf{#1}}\vspace{0.5em}\hrule\vspace{0.5em}}
@@ -52,11 +71,14 @@
 \thispagestyle{empty}
 
 % Setting font
-\sffamily
+% \sffamily
+
+% \yt{https://www.youtube.com/channel/UCqM4avrjDiO7ji1Q2nn7vKQ}
+% \github{https://github.com/ljrobins} 
 
 % Header
 \noindent
-\textbf{\huge Liam Robinson} \github{https://github.com/ljrobins} \yt{https://www.youtube.com/channel/UCqM4avrjDiO7ji1Q2nn7vKQ} -- \textit{\huge Curriculum Vitae} \hfill \href{mailto:robin502@purdue.edu}{robin502@purdue.edu} | (704) 998-8906
+\textbf{\huge Liam Robinson }{\huge -- }\textit{\huge Curriculum Vitae} \hfill \href{mailto:robin502@purdue.edu}{robin502@purdue.edu}
 \rule{\linewidth}{4pt}
 \vspace{-0.5em}
 
@@ -67,43 +89,52 @@
 \textit{MS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill January 2023 -- December 2023 \\
 \textit{BS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill August 2019 -- December 2022 \\
 
-% Employment
-\sectiontitle{Employment}
-\textbf{Space Information Dynamics Group} -- Graduate Research Assistant \hfill October 2021 -- Present \\
-\textbf{Astronomical Institute, University of Bern, Switzerland} -- Visiting Ph.D.\ student \hfill May 2024 -- August 2024
-\textbf{The Aerospace Corporation} -- Graduate Astrodynamics Intern \hfill May 2023 -- August 2023 \\
-\textbf{Katalyst Space Technologies} -- Guidance, Navigation, and Control Intern \hfill May 2022 -- August 2022 \\
-\textbf{Analytical Graphics, Inc.} -- Systems Engineering Intern \hfill May 2021 -- August 2021 \\
-
-
-\sectiontitle{Awards \& Honors}
+\sectiontitle{Fellowships, Awards, and Honors}
 \begin{itemize}[noitemsep]
-    \item National Defense Science and Engineering Graduate Fellowship \hfill May 2023
-    \item NSF Graduate Research Fellowship \hfill May 2023
-    \item NASA National Space Technology Graduate Research Opportunity Fellowship \hfill May 2023
+    \item Best graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2025
+    \item National Defense Science and Engineering Graduate Fellowship (NDSEG) \hfill May 2023
+    \item NSF Graduate Research Fellowship (GRFP) \hfill May 2023
+    \item NASA National Space Technology Graduate Research Opportunity Fellowship (NSTGRO) \hfill May 2023
     \item Third place graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2023
     \item Best research talk -- \textit{Undergraduate Research Conference} \hfill May 2022
     \item Best interdisciplinary research -- \textit{Undergraduate Research Conference} \hfill May 2022
     \item Best undergraduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill May 2022
 \end{itemize}
 
+% Employment
+\sectiontitle{Employment}
+\textbf{Space Information Dynamics Group} -- Graduate Research Assistant \hfill October 2021 -- Present \\
+\textbf{Astronomical Institute, University of Bern, Switzerland} -- Visiting Ph.D.\ student \hfill May 2024 -- August 2024 \\
+\textbf{The Aerospace Corporation} -- Graduate Astrodynamics Intern \hfill May 2023 -- August 2023 \\
+\textbf{Katalyst Space Technologies} -- Guidance, Navigation, and Control Intern \hfill May 2022 -- August 2022 \\
+\textbf{Analytical Graphics, Inc.} -- Systems Engineering Intern \hfill Jan 2021 -- August 2021 \\
+
+\sectiontitle{Professional Service}
+
+\begin{itemize}[noitemsep]
+  \item Referee: Journal of the Astronautical Sciences
+\end{itemize}
+
+\sectiontitle{Academic Outreach}
+\textbf{Founder of Boilerexams.com} \hfill August 2019 -- Present \\
+% \begin{itemize}[noitemsep]
+%     \item Published 80 hours of video explanations covering 500 questions from past Purdue calculus exams
+%     \item Aided over 20,000 students through 22 years of cummulative studying time and 750,000 video views to date
+%     \item Lead team of 50 develop and maintain website integrating exam questions and videos, giving students
+%     insight into studying performance with 8,400,000 questions answered as of July 2025
+% \end{itemize}
 % Publications
+
 \nocite{*}
 \sectiontitle{First-Author Publications}
-\printbibliography[heading=none, notkeyword={nobib}, resetnumbers=true]
+\printbibliography[heading=none, keyword={first}, resetnumbers=true]
 
+\nocite{*}
 \sectiontitle{Other Publications}
-\printbibliography[heading=none, keyword={nobib}, resetnumbers=true]
+\printbibliography[heading=none, keyword={second}, resetnumbers=true]
 
-% Relevant Experience
-\pagebreak
-\sectiontitle{Academic Outreach}
-\textbf{Founder of Boilerexams.com} \hfill August 2019 -- Present
-\begin{itemize}[noitemsep]
-    \item Published 80 hours of video explanations covering 500 questions from past Purdue calculus exams
-    \item Aided over 20,000 students through 22 years of cummulative studying time and 750,000 video views to date
-    \item Lead team of 35 develop and maintain website integrating exam questions and videos, giving students
-    insight into studying performance with 7,100,000 questions answered as of March 2025
-\end{itemize}
+\nocite{*}
+\sectiontitle{Working Papers}
+\printbibliography[heading=none, keyword={working}, resetnumbers=true]
 
 \end{document}

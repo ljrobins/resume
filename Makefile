@@ -8,7 +8,7 @@ resume:
 	lualatex -shell-escape resume
 	lualatex -shell-escape resume
 	cp resume.pdf ../../sites/personal-site/static
-	rsync -v -e ssh resume.pdf liam@192.168.4.23:/home/liam/containers/blog/personal-site/static/resume.pdf
+	rsync -v -e ssh resume.pdf liam@192.168.4.219:/home/liam/containers/blog/personal-site/static/resume.pdf
 
 
 cv:
@@ -16,7 +16,7 @@ cv:
 	biber cv
 	lualatex -shell-escape cv
 	lualatex -shell-escape cv
-	rsync -v -e ssh cv.pdf liam@192.168.4.23:/home/liam/containers/blog/personal-site/static/cv.pdf
+	rsync -v -e ssh cv.pdf liam@192.168.4.219:/home/liam/containers/blog/personal-site/static/cv.pdf
 
 clean:
 	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.idx *.lot *.lof *.fls *.fdb* *.bcf *.lol *.run.xml *.snm *.nav
