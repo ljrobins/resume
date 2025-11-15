@@ -1,28 +1,24 @@
-.PHONY: all clean clean_after resume open opencv cv
+.PHONY: all resume open opencv cv
 
-all: clean resume cv clean_after
+all:
+	latexmk -lualatex -shell-escape -output-directory=build *.tex
+	cp build/*.pdf .
+	rm -rf build
 
 resume:
-	lualatex -shell-escape resume
-	biber resume
-	lualatex -shell-escape resume
-	lualatex -shell-escape resume
+	latexmk -lualatex -shell-escape -output-directory=build resume
+	cp build/resume.pdf .
+	rm -rf build
 	cp resume.pdf ../../sites/personal-site/static
 	rsync -v -e ssh resume.pdf liam@192.168.4.219:/home/liam/containers/blog/personal-site/static/resume.pdf
-
+	open resume.pdf
 
 cv:
-	lualatex -shell-escape cv
-	biber cv
-	lualatex -shell-escape cv
-	lualatex -shell-escape cv
+	latexmk -lualatex -shell-escape -output-directory=build cv
+	cp build/cv.pdf .
+	rm -rf build
 	rsync -v -e ssh cv.pdf liam@192.168.4.219:/home/liam/containers/blog/personal-site/static/cv.pdf
-
-clean:
-	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.idx *.lot *.lof *.fls *.fdb* *.bcf *.lol *.run.xml *.snm *.nav
-
-clean_after:
-	rm -f *.aux *.bbl *.blg *.log *.out *.toc *.idx *.lot *.lof *.fls *.fdb* *.bcf *.lol *.run.xml *.snm *.nav
+	open cv.pdf
 
 open:
 	open resume.pdf

@@ -2,65 +2,39 @@
 \usepackage[utf8]{inputenc}
 \usepackage[left=0.5in, right=0.5in, top=0.5in, bottom=0.5in]{geometry}
 \usepackage{enumitem}
-\usepackage[hidelinks]{hyperref}
+\usepackage{hyperref} % provides clickable \url command
+\hypersetup{
+    breaklinks, % allow line breaks in links
+    colorlinks, % allow colors for links
+    allcolors=black, % disable obnoxious colors for \ref, \cite, etc. (optional)
+    urlcolor=black, % choose color for \url (default)
+}
+\usepackage{xurl} % allows arbitrary line breaks in \url (optional)
+
+\usepackage{setspace}
+\setstretch{1.2}
+
+\usepackage{lua-ul} % provides underlining for LuaLaTeX
+
 \usepackage{lmodern}
 \usepackage{amsmath}
-\usepackage[backend=biber, style=authortitle, sorting=ynt, giveninits=false, defernumbers=true, dashed=false, url=false, isbn=false, maxbibnames=99, minbibnames=99]{biblatex}
-\addbibresource{bibs/conference.bib}
-\addbibresource{bibs/journal.bib}
-\addbibresource{bibs/presentations.bib}
-\addbibresource{bibs/thesis.bib}
+\usepackage[backend=biber, style=numeric, sorting=ydnt, giveninits=false, defernumbers=true, url=false, isbn=false, maxbibnames=99, minbibnames=99]{biblatex}
+\addbibresource[label=conference]{bibs/conference.bib}
+\addbibresource[label=journal]{bibs/journal.bib}
+\addbibresource[label=presentation]{bibs/presentations.bib}
+\addbibresource[label=working]{bibs/working.bib}
 
-\usepackage{hyperref}
+% https://tex.stackexchange.com/questions/21401/biblatex-reverse-numbering-i-e-count-down
+% Count total number of entries in each refsection
+\AtDataInput{%
+  \csnumgdef{entrycount:\therefsection}{%
+    \csuse{entrycount:\therefsection}+1}}
 
-% \usepackage{fontawesome5}
-% \makeatletter
-% \newcommand{\github}[1]{%
-%    \href{#1}{\faGithub}%
-% }
-% \makeatother
-% \makeatletter
-% \newcommand{\yt}[1]{%
-%    \href{#1}{\faYoutube}%
-% }
-% \makeatother
-% https://orcid.org/0009-0005-7612-5613
-
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map[overwrite]{
-      \perdatasource{bibs/journal.bib}
-      \step[fieldset=keywords, fieldvalue={,journal}, append]
-    }
-  }
-}
-
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map[overwrite]{
-      \perdatasource{bibs/conference.bib}
-      \step[fieldset=keywords, fieldvalue={,conference}, append]
-    }
-  }
-}
-
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map[overwrite]{
-      \perdatasource{bibs/presentations.bib}
-      \step[fieldset=keywords, fieldvalue={,presentations}, append]
-    }
-  }
-}
-
-\DeclareSourcemap{
-  \maps[datatype=bibtex]{
-    \map[overwrite]{
-      \perdatasource{bibs/thesis.bib}
-      \step[fieldset=keywords, fieldvalue={,thesis}, append]
-    }
-  }
-}
+% Print the labelnumber as the total number of entries in the
+% current refsection, minus the actual labelnumber, plus one
+\DeclareFieldFormat{labelnumber}{\mkbibdesc{#1}}    
+\newrobustcmd*{\mkbibdesc}[1]{%
+  \number\numexpr\csuse{entrycount:\therefsection}+1-#1\relax}
 
 % https://stackoverflow.com/questions/64528904/how-to-underline-specific-author-name-automatically-in-latex-bibiolgraphy
 \usepackage{xstring}
@@ -92,101 +66,129 @@
 % Disable paragraph indentation
 \setlength{\parindent}{0pt}
 % Add some space between paragraphs
-\setlength{\parskip}{0.1em}
+\setlength{\parskip}{0.5em}
 % Set the skip length before itemize
 \setlist[itemize]{before=\vspace{-0.5\baselineskip}}
 % before bibitems
 \setlength{\bibitemsep}{0.5em}
 
 % Custom commands for sections
-\newcommand{\sectiontitle}[1]{{\Large \textbf{#1}}\vspace{0.5em}\hrule\vspace{0.5em}}
+\newcommand{\sectiontitle}[1]{\vspace{0.25em}\hrule \vspace{0.25em} {\Large \textbf{#1}}\vspace{0.25em}}
 
 \begin{document}
 \thispagestyle{empty}
 
-% Setting font
-% \sffamily
-
-% \yt{https://www.youtube.com/channel/UCqM4avrjDiO7ji1Q2nn7vKQ}
-% \github{https://github.com/ljrobins} 
-
 % Header
 \noindent
-\textbf{\huge Liam Robinson }{\huge -- }\textit{\huge Curriculum Vitae} \hfill \href{mailto:robin502@purdue.edu}{robin502@purdue.edu}
-\rule{\linewidth}{4pt}
-\vspace{-0.5em}
+\textbf{\huge Liam Robinson }{\huge \textbf{--} }\textit{\huge Curriculum Vitae} \hfill \href{mailto:robin502@purdue.edu}{robin502@purdue.edu} \\ \null \hfill Lafayette, IN | (704) 998-8906
+% \rule{\linewidth}{4pt}
+\vspace{0.5em}
 
 \sectiontitle{Research Interests}
 
-Space situational awareness, space object characterization, inverse problems, high-performance computing for astrodynamics. \\
+Space situational awareness, space object characterization, inverse problems, high-performance computing, optical satellite photometry, space debris laser ranging\\
 
-% Education
 \sectiontitle{Education}
-\textbf{Purdue University} -- West Lafayette, IN \\
-\textit{Ph.D.\ Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill May 2027 \\
-\textit{MS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill Dec 2023 \\
-\textit{BS Aeronautical and Astronautical Engineering} -- 4.0 GPA \hfill Dec 2022 \\
 
-\sectiontitle{Fellowships, Awards, and Honors}
+\textbf{Purdue University} -- West Lafayette, IN \\
+\textit{Ph.D.\ Aeronautical and Astronautical Engineering} (4.0 GPA) \hfill Expected May 2027 \\
+\hspace*{2em} Thesis: ``Attitude and Shape Characterization for Space Objects using Light Curves and Laser Ranging'' \\
+\hspace*{2em} Advisor: Carolin Frueh \\
+\textit{MS Aeronautical and Astronautical Engineering} (4.0 GPA) \hfill Dec 2023 \\
+\hspace*{2em} Thesis: ``\underLine{\href{https://hammer.purdue.edu/articles/thesis/_b_LIGHT_CURVE_SIMULATION_AND_SHAPE_INVERSION_FOR_HUMAN-MADE_SPACE_OBJECTS_b_/24728835?file=43481214}{Light Curve Simulation and Shape Inversion for Human-Made Space Objects}}'' \\
+\hspace*{2em} Advisor: Carolin Frueh \\
+\textit{BS Aeronautical and Astronautical Engineering} (4.0 GPA) \hfill Dec 2022 \\
+
+\sectiontitle{Fellowships \& Awards}
 \begin{itemize}[noitemsep]
-    \item Best graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill 2025
-    \item National Defense Science and Engineering Graduate Fellowship (NDSEG) \hfill 2023
-    \item NSF Graduate Research Fellowship (GRFP) \hfill 2023
-    \item NASA National Space Technology Graduate Research Opportunity Fellowship (NSTGRO) \hfill 2023
-    \item $3^\text{rd}$ place graduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill 2023
-    \item Best research talk -- \textit{Undergraduate Research Conference} \hfill 2022
-    \item Best interdisciplinary research -- \textit{Undergraduate Research Conference} \hfill 2022
-    \item Best undergraduate presentation -- \textit{Purdue Aeronautics and Astronautics Symposium} \hfill 2022
+    \item Best Graduate Presentation at the Purdue Aeronautics and Astronautics Symposium | \$500 \hfill 2025
+    \item National Defense Science and Engineering Graduate Fellowship (NDSEG) | \$142,000 \hfill 2023 -- 2026
+    \item NSF Graduate Research Fellowship (GRFP) | \$111,000 (declined) \hfill 2023
+    \item NASA National Space Technology Graduate Research Opportunity (NSTGRO) | \$150,000 (declined) \hfill 2023
+    \item $3^\text{rd}$ Place Graduate Presentation at the Purdue Aeronautics and Astronautics Symposium | \$200 \hfill 2023
+    \item Best Research Talk at the Purdue Undergraduate Research Conference | \$500 \hfill 2022
+    \item Best Interdisciplinary Research at the Purdue Undergraduate Research Conference | \$100 \hfill 2022
+    \item Best Undergraduate Presentation at the Purdue Aeronautics and Astronautics Symposium | \$150 \hfill 2022
+    \item AAE General Scholarship | \$5000 \hfill 2022
+    \item J.\ M.\ Umbreit Scholarship | \$5500 \hfill 2020 -- 2022
 \end{itemize}
 
-\nocite{*}
 \sectiontitle{Peer-Reviewed Publications}
-\printbibliography[heading=none, keyword={journal}, resetnumbers=true]
+\begin{refsection}[journal]
+  \nocite{*}
+  \printbibliography[heading=none, resetnumbers=true]
+\end{refsection}
 
-\nocite{*}
 \sectiontitle{Conference Proceedings}
-\printbibliography[heading=none, keyword={conference}, resetnumbers=true]
+\begin{refsection}[conference]
+  \nocite{*}
+  \printbibliography[heading=none, resetnumbers=true]
+\end{refsection}
 
-\nocite{*}
-\sectiontitle{Symposiums and Presentations}
-\printbibliography[heading=none, keyword={presentations}, resetnumbers=true]
+\sectiontitle{Working Papers}
+\begin{refsection}[working]
+  \nocite{*}
+  \printbibliography[heading=none, resetnumbers=true]
+\end{refsection}
 
-\nocite{*}
-\sectiontitle{Thesis}
-\printbibliography[heading=none, keyword={thesis}, resetnumbers=true]
+\sectiontitle{Symposiums \& Presentations}
+\begin{refsection}[presentation]
+  \nocite{*}
+  \printbibliography[heading=none, resetnumbers=true]
+\end{refsection}
 
-% \sectiontitle{Research Experience}
+\sectiontitle{Research Experience}
 
+\textbf{Space Information Dynamics Group} -- Graduate Research Assistant \hfill Oct 2021 -- Present
+\begin{itemize}[noitemsep]
+    \item Designing novel space object characterization algorithms under Dr.\ Carolin Frueh, estimating shape and orientation of human-made space objects from unresolved optical observations
+    \item Introduced new light curve inversion algorithms to estimate non-convex shapes and complex spin profiles
+    \item Collaborated with Ph.D.\ students on relative pose estimation and filter design for attitude estimation
+    \item Primary operator of the Purdue Optical Ground Station telescope for optical image collection and processing
+\end{itemize}
+
+\textbf{Astronomical Institute, University of Bern, Switzerland} -- Visiting Ph.D.\ student \hfill May 2024 -- Aug 2024
+\begin{itemize}[noitemsep]
+    \item Worked with Dr.\ Thomas Schildknecht's group on image acquisition and processing for satellite characterization
+    \item Validated digital twin model for optical telescopes against imagery acquired by the Zimmerwald Observatory
+\end{itemize}
+
+\sectiontitle{Teaching \& Mentoring Experience}
+
+\begin{itemize}
+  \item Produced 180 exam review videos covering undergraduate engineering math courses (2019 -- 2021), viewed by Purdue students over 1,000,000 times as of November 2025 through the Boilerexams project.
+  \item Mentored 22 undergraduate engineering student volunteers with Boilerexams (2023 -- present) on producing exam review lectures for fellow Purdue students. Led meetings to develop consistent and effective pedagogy based on feedback from students, faculty, and administration. Mentees have created 150 hours of video across 20 introductory STEM courses as of November 2025, viewed by Purdue students over 750,000 times.
+\end{itemize}
 
 % Employment
 \sectiontitle{Industry Employment}
-\textbf{Space Information Dynamics Group} -- Graduate Research Assistant \hfill October 2021 -- Present \\
-\textbf{Astronomical Institute, University of Bern, Switzerland} -- Visiting Ph.D.\ student \hfill May 2024 -- Aug 2024 \\
-\textbf{The Aerospace Corporation} -- Graduate Astrodynamics Intern \hfill May 2023 -- Aug 2023 \\
-\textbf{Katalyst Space Technologies} -- Guidance, Navigation, and Control Intern \hfill May 2022 -- Aug 2022 \\
-\textbf{Analytical Graphics, Inc.} -- Systems Engineering Intern \hfill Jan 2021 -- May 2021 \\
+
+\textbf{The Aerospace Corporation} | Graduate Astrodynamics Intern \hfill May 2023 -- Aug 2023 \\
+\textbf{Katalyst Space Technologies} | Guidance, Navigation, and Control Intern \hfill May 2022 -- Aug 2022 \\
+\textbf{Analytical Graphics, Inc.} | Systems Engineering Intern \hfill Jan 2021 -- May 2021 \\
 
 \sectiontitle{Professional Service}
 
 \begin{itemize}[noitemsep]
-  \item Referee: Journal of the Astronautical Sciences
+  \item Referee: \textit{Journal of the Astronautical Sciences}
 \end{itemize}
 
 \sectiontitle{Academic Outreach}
-\textbf{Founder of Boilerexams.com} \hfill Aug 2019 -- Present \\
+
+\textbf{Founder of Boilerexams.com} \hfill Aug 2019 -- Present
 \begin{itemize}[noitemsep]
-    \item Lead team of 50 develop and maintain website to provide exam studying resources to questions to fellow Purdue students with 8,400,000 questions answered as of July 2025
-    \item Published 80 hours of video explanations covering 500 questions from past Purdue calculus exams
-    \item Aided over 20,000 students through 22 years of cummulative studying time and 750,000 video views to date
+    \item Led team of 20 students to develop and maintain website to provide exam studying resources to fellow Purdue students with 9,400,000 questions answered as of November 2025
+    \item Interfaced with College of Engineering administrators, University Vice Provosts, and member of the University Board of Trustees to support STEM retention objectives
+    \item Initiated the founding of similar organizations under development at five other universities
 \end{itemize}
 
-% \sectiontitle{References}
+\sectiontitle{References}
 
-% \begin{itemize}
-%   \item Carolin Frueh \\
-% Harold DeGroff Associate Professor of Aeronautics and Astronautics \\
-% Purdue University \\
-% cfrueh@purdue.edu, (765)-494-7436 \\
-% \end{itemize}
+\begin{itemize}
+  \item Carolin Frueh \\
+  Harold DeGroff Associate Professor of Aeronautics and Astronautics \\
+  Purdue University \\
+  cfrueh@purdue.edu, (765) 494-7436 \\
+\end{itemize}
 
 \end{document}
